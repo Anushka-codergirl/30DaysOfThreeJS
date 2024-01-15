@@ -1,0 +1,77 @@
+* {
+  box-sizing: border-box;
+  transition: all 0.12s cubic-bezier(0.42, 0.54, 0.22, 1.26);
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  height: 100vh;
+  width: 100vw;
+  background-color: #000;
+  color: #fff;
+  position: relative;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+audio {
+  position: fixed;
+  left: 10px;
+  bottom: 10px;
+  width: calc(100% - 20px);
+}
+
+/* Responsive styling for iPad */
+@media only screen and (max-width: 768px) {
+  audio {
+    width: calc(100% - 20px); /* Adjust the width for iPad */
+  }
+}
+
+/* Responsive styling for mobile devices */
+@media only screen and (max-width: 480px) {
+  audio {
+    width: calc(100% - 20px); /* Adjust the width for mobile devices */
+    left: 5px; /* Adjust left position for mobile devices */
+    bottom: 5px; /* Adjust bottom position for mobile devices */
+  }
+}
+
+#audioFile {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: 1;
+}
+
+label.file {
+  display: inline-block;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate3d(-50%, -50%, 0);
+  border-radius: 50px;
+  padding: 1rem;
+  background-color: #ee82ee;
+  color: #fff;
+  font-size: 1rem;
+  box-shadow: 0 20px 60px blueviolet;
+  cursor: pointer;
+}
+
+label.file:hover {
+  background: blueviolet;
+  transform: translate3d(-50%, -55%, 0);
+}
+
+label.file.normal {
+  transform: translate3d(10%, 50%, 0);
+  padding: 1rem;
+  font-size: 1rem;
+  top: 0;
+  left: 0;
+}
