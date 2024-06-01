@@ -1,5 +1,5 @@
-import * as THREE from 'https://threejsfundamentals.org/threejs/resources/threejs/r127/build/three.module.js';
-import { OrbitControls } from 'https://threejsfundamentals.org/threejs/resources/threejs/r127/examples/jsm/controls/OrbitControls.js';
+import * as THREE from "https://threejsfundamentals.org/threejs/resources/threejs/r127/build/three.module.js";
+import { OrbitControls } from "https://threejsfundamentals.org/threejs/resources/threejs/r127/examples/jsm/controls/OrbitControls.js";
 
 var container;
 var camera, scene, renderer, controls;
@@ -8,11 +8,16 @@ var shapes = [];
 init();
 
 function init() {
-  container = document.createElement('div');
+  container = document.createElement("div");
   document.body.appendChild(container);
   scene = new THREE.Scene();
 
-  camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 1, 1000);
+  camera = new THREE.PerspectiveCamera(
+    50,
+    window.innerWidth / window.innerHeight,
+    1,
+    1000
+  );
   camera.position.set(0, 0, 800);
 
   controls = new OrbitControls(camera, container);
@@ -33,8 +38,7 @@ function init() {
   light2.position.z = -150;
   camera.add(light2);
 
-  scene.background = new THREE.Color('#000000');
-
+  scene.background = new THREE.Color("#000000");
 
   var heartShape = new THREE.Shape();
   heartShape.moveTo(25, 25);
@@ -51,15 +55,14 @@ function init() {
     bevelSegments: 20,
     steps: 2,
     bevelSize: 20,
-    bevelThickness: 10
+    bevelThickness: 10,
   };
 
   for (var i = -window.innerWidth / 2; i < window.innerWidth / 2; i += 60) {
     for (var j = -window.innerHeight / 2; j < window.innerHeight / 2; j += 60) {
-      addShape(heartShape, extrudeSettings, '#ff0022', i, j, 0, 0, 0, 0, 0.3);
+      addShape(heartShape, extrudeSettings, "#ff0022", i, j, 0, 0, 0, 0, 0.3);
     }
   }
-
 
   loadFont(); // Load font and create text
 
@@ -68,30 +71,41 @@ function init() {
   renderer.setSize(window.innerWidth, window.innerHeight);
   container.appendChild(renderer.domElement);
 
-  window.addEventListener('resize', onWindowResize);
+  window.addEventListener("resize", onWindowResize);
 
   render();
 }
 
 function addShape(shape, extrudeSettings, color, x, y, z, rx, ry, rz, s) {
   var geometry = new THREE.ExtrudeGeometry(shape, extrudeSettings);
-  var mesh = new THREE.Mesh(geometry, new THREE.MeshPhongMaterial({ color: color }));
+  var mesh = new THREE.Mesh(
+    geometry,
+    new THREE.MeshPhongMaterial({ color: color })
+  );
   mesh.position.set(x, y, z);
   mesh.rotation.set(rx, ry, rz);
   mesh.scale.set(s, s, s);
-  shapes.push({ shape: mesh, x: Math.random(), y: Math.random(), z: Math.random() });
+  shapes.push({
+    shape: mesh,
+    x: Math.random(),
+    y: Math.random(),
+    z: Math.random(),
+  });
   scene.add(mesh);
 }
 
 function loadFont() {
   const fontLoader = new THREE.FontLoader();
-  fontLoader.load('https://threejsfundamentals.org/threejs/resources/threejs/fonts/helvetiker_regular.typeface.json', function (font) {
-    createText(font);
-  });
+  fontLoader.load(
+    "https://threejsfundamentals.org/threejs/resources/threejs/fonts/helvetiker_regular.typeface.json",
+    function (font) {
+      createText(font);
+    }
+  );
 }
 
 function createText(font) {
-  const textGeometry = new THREE.TextGeometry('Thank You!', {
+  const textGeometry = new THREE.TextGeometry("Thank You!", {
     font: font,
     size: 50,
     height: 10,
@@ -102,7 +116,7 @@ function createText(font) {
     bevelSegments: 5,
   });
 
-  const textMaterial = new THREE.MeshPhongMaterial({ color: '#ffffff' });
+  const textMaterial = new THREE.MeshPhongMaterial({ color: "#ffffff" });
   const textMesh = new THREE.Mesh(textGeometry, textMaterial);
 
   // Center the text in the screen
@@ -115,12 +129,12 @@ function createText(font) {
 
 function animate() {
   var speed = 0.015;
-  shapes.forEach(el => {
+  shapes.forEach((el) => {
     el.shape.rotation.x += el.x * speed;
     el.shape.rotation.y += el.y * speed;
     el.shape.rotation.z += el.z * speed;
   });
-  controls.update(); 
+  controls.update();
 }
 
 function render() {

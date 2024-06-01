@@ -10,8 +10,8 @@ body {
   overflow: hidden;
   height: 100vh;
   width: 100vw;
-  background-color: #000;
-  color: #fff;
+  background-color: #000000;
+  color: #FFFFFF;
   position: relative;
   font-family: 'Courier New', Courier, monospace;
 }
@@ -26,16 +26,20 @@ audio {
 /* Responsive styling for iPad */
 @media only screen and (max-width: 768px) {
   audio {
-    width: calc(100% - 20px); /* Adjust the width for iPad */
+    width: calc(100% - 20px);
+    /* Adjust the width for iPad */
   }
 }
 
 /* Responsive styling for mobile devices */
 @media only screen and (max-width: 480px) {
   audio {
-    width: calc(100% - 20px); /* Adjust the width for mobile devices */
-    left: 5px; /* Adjust left position for mobile devices */
-    bottom: 5px; /* Adjust bottom position for mobile devices */
+    width: calc(100% - 20px);
+    /* Adjust the width for mobile devices */
+    left: 5px;
+    /* Adjust left position for mobile devices */
+    bottom: 5px;
+    /* Adjust bottom position for mobile devices */
   }
 }
 
@@ -57,7 +61,7 @@ label.file {
   border-radius: 50px;
   padding: 1rem;
   background-color: #ee82ee;
-  color: #fff;
+  color: #FFFFFF;
   font-size: 1rem;
   box-shadow: 0 20px 60px blueviolet;
   cursor: pointer;

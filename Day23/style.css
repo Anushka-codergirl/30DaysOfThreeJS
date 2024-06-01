@@ -1,0 +1,25 @@
+body {
+    margin: 0;
+    font-family: sans-serif;
+    background-color: #000000;
+}
+
+header {
+    margin-top: 3em;
+    text-align: center;
+    color: #FFFFFF;
+}
+
+
+header h1 {
+    font-size: 2em;
+    font-weight: 900;
+}
+
+#container-3D {
+    width: 100vw !important;
+    height: 100vh !important;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
